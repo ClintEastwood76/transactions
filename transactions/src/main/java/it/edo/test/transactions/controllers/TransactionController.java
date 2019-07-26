@@ -2,7 +2,11 @@ package it.edo.test.transactions.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,5 +22,10 @@ public class TransactionController {
 	@RequestMapping("/transactions")
 	public List<Transaction> getAllTransactions() {
 		return transactionService.getAllTransactions();
+	}
+	
+	@PostMapping("createTransaction")
+	public Transaction createTransaction(@Valid @RequestBody String desc) {
+		return transactionService.insert(desc);
 	}
 }
