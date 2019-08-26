@@ -7,7 +7,6 @@ import it.edo.test.transactions.domain.Transaction;
 
 public interface TransactionService {
 
-	public List<Transaction> getAllTransactions();
+	public List<Transaction> getAllTransactions(String owner);
 
-	public Transaction insert(String desc);
 }

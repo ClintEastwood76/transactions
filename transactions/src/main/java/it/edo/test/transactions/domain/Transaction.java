@@ -12,6 +12,7 @@ public class Transaction {
 	
 	private Date date;
 	private String desc;
+	private String owner;
 
 	public String getDesc() {
 		return desc;
@@ -38,10 +39,30 @@ public class Transaction {
 		this._id = _id;
 	}
 
-	public Transaction(Date date, String desc) {
-		super();
-		this.setDate(date);
-		this.desc = desc;
+	public String getOwner() {
+		return owner;
 	}
 
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+
+	@Override
+	public String toString() {
+		return "Transaction [_id=" + _id + ", date=" + date + ", desc=" + desc + ", owner=" + owner + "]";
+	}
+
+	public Transaction(Date date, String desc, String owner) {
+		super();
+		this.date = date;
+		this.desc = desc;
+		this.owner = owner;
+	}
+	
+	public Transaction() {
+		super();
+	}
+	
+
+	
 }

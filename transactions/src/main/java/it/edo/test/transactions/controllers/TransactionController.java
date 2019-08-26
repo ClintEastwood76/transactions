@@ -2,8 +2,11 @@ package it.edo.test.transactions.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,13 +22,15 @@ public class TransactionController {
 	@Autowired
 	TransactionService transactionService;
 	
+	Logger logger = LoggerFactory.getLogger(TransactionController.class);
+	
 	@RequestMapping("/transactions")
-	public List<Transaction> getAllTransactions() {
-		return transactionService.getAllTransactions();
+	public List<Transaction> getAllTransactions(HttpServletRequest request) {
+		logger.info("Session id: " + request.getSession().getId());
+		logger.info("Request id: " + request.toString());
+		// facciamo finta di tirarlo fuori dalla sessione
+		String owner = "edo";
+		return transactionService.getAllTransactions(owner);
 	}
 	
-	@PostMapping("createTransaction")
-	public Transaction createTransaction(@Valid @RequestBody String desc) {
-		return transactionService.insert(desc);
-	}
 }
