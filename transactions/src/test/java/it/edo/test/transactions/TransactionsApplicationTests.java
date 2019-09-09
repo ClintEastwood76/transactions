@@ -50,7 +50,7 @@ public class TransactionsApplicationTests {
 		String owner2 = "ardo";
 		Transaction t3 = new Transaction(new Date(), "trx3", owner2);
 		repository.insert(t3);
-		for (int i = 0; i < 40; i++) {
+		for (int i = 0; i < 10; i++) {
 			Transaction t1 = new Transaction(new Date(), "trx " + i, owner1);
 			repository.insert(t1);
 		}
@@ -60,7 +60,7 @@ public class TransactionsApplicationTests {
 	@Test
 	public void findByOwner() {
 		Transaction t = new Transaction();
-		t.setOwner("edo");
+		t.setOwner("ardo");
 		Example<Transaction> example = Example.of(t);
 		for (Transaction t2 : repository.findAll(example)) {
 			logger.info(t2.toString());
