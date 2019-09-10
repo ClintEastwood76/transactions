@@ -14,7 +14,9 @@ import org.springframework.data.domain.Example;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import it.edo.test.transactions.controllers.TransactionController;
+import it.edo.test.transactions.domain.Recharge;
 import it.edo.test.transactions.domain.Transaction;
+import it.edo.test.transactions.repositories.RechargeRepository;
 import it.edo.test.transactions.repositories.TransactionsRepository;
 
 @RunWith(SpringRunner.class)
@@ -25,6 +27,9 @@ public class TransactionsApplicationTests {
 	
 	@Autowired
 	TransactionsRepository repository;
+	
+	@Autowired
+	RechargeRepository rechargeRepo;
 	
 	@Test
 	public void contextLoads() {
@@ -65,6 +70,22 @@ public class TransactionsApplicationTests {
 		for (Transaction t2 : repository.findAll(example)) {
 			logger.info(t2.toString());
 		};
+		
+	}
+	
+	@Test
+	public void testInsertRecharge() {
+		String owner1 = "edo";
+		// String owner2 = "ardo";
+		Recharge r1 = new Recharge();
+		r1.setOwner(owner1);
+		r1.setValidFrom(new Date());
+		r1.setValidThru(new Date());
+		r1.setLength(30);
+		r1.setLeft(12);
+		r1.setCode("000002");
+		rechargeRepo.insert(r1);
+		
 		
 	}
 }
