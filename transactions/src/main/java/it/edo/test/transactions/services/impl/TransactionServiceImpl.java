@@ -21,7 +21,7 @@ public class TransactionServiceImpl implements TransactionService {
 	
 	public List<Transaction> getAllTransactions(String owner) {
 		Transaction t = new Transaction();
-		t.setOwner("edo");
+		t.setOwner(owner);
 		Example<Transaction> example = Example.of(t);
 		return repository.findAll(example);
 	}
