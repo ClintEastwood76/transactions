@@ -1,5 +1,8 @@
 package it.edo.test.transactions.domain;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+
 public class User {
 /*
 	id: number;
@@ -11,16 +14,17 @@ public class User {
 	token?: string;
 */
 	
-	Integer id;
+	@Id
+	public ObjectId _id;
 	
 	String username, password, firstName, lastName, token;
 
-	public Integer getId() {
-		return id;
+	public ObjectId get_id() {
+		return _id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void set_id(ObjectId _id) {
+		this._id = _id;
 	}
 
 	public String getUsername() {
@@ -62,7 +66,12 @@ public class User {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "User [_id=" + _id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", token=" + token + "]";
+	}
+
 	
 }
