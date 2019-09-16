@@ -23,10 +23,6 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
 		it.edo.test.transactions.domain.User user = userService.loadUserByUsername(username);
 		if (!StringUtils.isEmpty(username)) {
 			return new User(user.getUsername(), user.getPassword(), new ArrayList<>());
-		
-//		if ("javainuse".equals(username)) {
-//			return new User("javainuse", "$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6",
-//					new ArrayList<>());
 		} else {
 			throw new UsernameNotFoundException("User not found with username: " + username);
 		}
