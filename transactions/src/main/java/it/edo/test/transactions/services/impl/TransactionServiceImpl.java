@@ -25,6 +25,16 @@ public class TransactionServiceImpl implements TransactionService {
 		Example<Transaction> example = Example.of(t);
 		return repository.findAll(example);
 	}
+
+	@Override
+	public Transaction getTransaction(String id, String owner) {
+		Transaction t = new Transaction();
+		t.setOwner(owner);
+		t.set_id(new ObjectId(id));
+		Example<Transaction> example = Example.of(t);
+		return repository.findAll(example).get(0);
+		
+	}
 	
 	
 }

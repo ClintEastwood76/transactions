@@ -9,4 +9,6 @@ public interface TransactionService {
 
 	public List<Transaction> getAllTransactions(String owner);
 
+	public Transaction getTransaction(String id, String owner);
+
 }
