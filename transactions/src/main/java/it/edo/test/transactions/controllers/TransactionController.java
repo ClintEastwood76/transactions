@@ -28,10 +28,8 @@ public class TransactionController extends AbstractJwtController {
 	Logger logger = LoggerFactory.getLogger(TransactionController.class);
 	
 	@RequestMapping("/transactions")
-	public List<Transaction> getAllTransactions(HttpServletRequest request, @RequestParam String owner) {
-		logger.info("Session id: " + request.getSession().getId());
-		logger.info("Request id: " + request.toString());
-		logger.info("Owner: " + owner);
+	public List<Transaction> getAllTransactions(HttpServletRequest request) {
+		String owner = getUsernameFromToken(request);
 		return transactionService.getAllTransactions(owner);
 	}
 	
