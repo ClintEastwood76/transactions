@@ -51,10 +51,10 @@ public class TransactionsApplicationTests {
 	
 	@Test
 	public void testInsert() {
-		String owner1 = "edo";
-		String owner2 = "ardo";
+		String owner1 = "prova";
+		String owner2 = "prova";
 		Transaction t3 = new Transaction(new Date(), "trx3", owner2);
-		repository.insert(t3);
+		// repository.insert(t3);
 		for (int i = 0; i < 10; i++) {
 			Transaction t1 = new Transaction(new Date(), "trx " + i, owner1);
 			repository.insert(t1);
@@ -75,7 +75,7 @@ public class TransactionsApplicationTests {
 	
 	@Test
 	public void testInsertRecharge() {
-		String owner1 = "edo";
+		String owner1 = "prova";
 		// String owner2 = "ardo";
 		Recharge r1 = new Recharge();
 		r1.setOwner(owner1);

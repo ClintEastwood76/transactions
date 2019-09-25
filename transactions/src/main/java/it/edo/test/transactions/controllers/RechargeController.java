@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.edo.test.transactions.domain.Recharge;
-import it.edo.test.transactions.domain.Transaction;
 import it.edo.test.transactions.services.RechargeService;
 
 @RestController
@@ -26,7 +25,8 @@ public class RechargeController extends AbstractJwtController {
 	
 	Logger logger = LoggerFactory.getLogger(RechargeController.class);
 	
-	@RequestMapping("/recharges")
+	// @RequestMapping("/recharges")
+	@Deprecated
 	public List<Recharge> getAllRecharges(HttpServletRequest request) {
 		String owner = getUsernameFromToken(request);
 		List<Recharge> list = rechargeService.getAllRecharges(owner);
@@ -38,10 +38,13 @@ public class RechargeController extends AbstractJwtController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping("/rechargepage")
-	public Page<Recharge> getRechargePage(HttpServletRequest request) {
+	@RequestMapping("/recharges")
+	public Page<Recharge> getRechargePage(HttpServletRequest request,
+			@RequestParam(value = "pagenum", required = false) Integer pageNum,
+			@RequestParam(value = "pagesize", required = false) Integer pageSize
+            ) {
 		String owner = getUsernameFromToken(request);
-		Page<Recharge> list = rechargeService.getRechargePage(owner, 0, 5);
+		Page<Recharge> list = rechargeService.getRechargePage(owner, pageNum, pageSize);
 		return list;
 	}
 	
