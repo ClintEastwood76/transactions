@@ -60,10 +60,12 @@ public class TransactionServiceTest {
 	
 	@Test
 	public void getTransactionTest() {
-		String code = "0";
-		String owner = "edo";
+		String code = "5d835cbf4208a8d9a41714d6";
+		String owner = "prova";
 		Transaction transaction = transactionService.getTransaction(code, owner);
 		logger.info(transaction.toString());
+		logger.info(transaction.get_id());
+		
 	}
 	
 	@Test

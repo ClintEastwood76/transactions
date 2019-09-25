@@ -28,7 +28,8 @@ public class RechargeController extends AbstractJwtController {
 	@RequestMapping("/recharges")
 	public List<Recharge> getAllTransactions(HttpServletRequest request) {
 		String owner = getUsernameFromToken(request);
-		return rechargeService.getAllRecharges(owner);
+		List<Recharge> list = rechargeService.getAllRecharges(owner);
+		return list;
 	}
 	
 
