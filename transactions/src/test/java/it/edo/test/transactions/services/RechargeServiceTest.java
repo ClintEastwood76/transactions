@@ -67,7 +67,7 @@ public class RechargeServiceTest {
 	@Test
 	public void insertSomeRechargesTest() throws ParseException {
 		String owner = "prova";
-		SimpleDateFormat sdf = new SimpleDateFormat("ddMyyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
 		for (int i = 1; i <= 12; i++) {
 			String dateToParse = "01" + (i<10 ? "0" + i: i) + "2019";
 			Recharge recharge = new Recharge();
@@ -80,5 +80,12 @@ public class RechargeServiceTest {
 			repository.insert(recharge);
 		}
 		
+	}
+	
+	@Test
+	public void ranzaRecharges() {
+		List<Recharge> list = rechargeService.getAllRecharges("prova");
+		for (Recharge entity : list) 
+			repository.delete(entity);
 	}
 }
