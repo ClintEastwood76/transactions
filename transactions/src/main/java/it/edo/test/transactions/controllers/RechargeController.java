@@ -33,11 +33,6 @@ public class RechargeController extends AbstractJwtController {
 		return list;
 	}
 
-	/**
-	 * TODO: rendere parametrica la pagina, ma ora non è importante
-	 * @param request
-	 * @return
-	 */
 	@RequestMapping("/recharges")
 	public Page<Recharge> getRechargePage(HttpServletRequest request,
 			@RequestParam(value = "pagenum", required = false) Integer pageNum,

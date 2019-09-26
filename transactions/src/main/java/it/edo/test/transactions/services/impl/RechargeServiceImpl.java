@@ -9,6 +9,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import it.edo.test.transactions.domain.Recharge;
@@ -47,7 +48,9 @@ public class RechargeServiceImpl extends BasicService implements RechargeService
 		Example<Recharge> example = Example.of(t);
 		Pageable pageable = PageRequest.of(
 				getPageNum(pageNum), 
-				getPageSize(pageSize));
+				getPageSize(pageSize),
+				Sort.by("validFrom").descending()
+			);
 		return repository.findAll(example, pageable);
 		
 	}
