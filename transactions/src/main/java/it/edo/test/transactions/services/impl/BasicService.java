@@ -3,15 +3,20 @@ package it.edo.test.transactions.services.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 
-// TODO: caricare le costanti dalla configurazione
 public abstract class BasicService {
 
 	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	protected Integer defaultPageSize = 5;// Integer.parseInt(env.getProperty("pagesize.default"));
-	protected Integer maxPageSize = 20;//Integer.parseInt(env.getProperty("pagesize.max"));
-	protected Integer defaultPageNum = 0;//Integer.parseInt(env.getProperty("pagenum.default"));
+	@Value("${pagesize.default}")
+	protected Integer defaultPageSize;
+	
+	@Value("${pagesize.max}")
+	protected Integer maxPageSize;
+	
+	@Value("${pagenum.default}")
+	protected Integer defaultPageNum;
 	
 	protected int getPageNum(Integer pageNum) {
 		if (pageNum != null && pageNum >= 0) {
