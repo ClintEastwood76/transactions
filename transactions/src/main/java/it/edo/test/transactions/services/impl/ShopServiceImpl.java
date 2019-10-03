@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.data.geo.Box;
 import org.springframework.data.geo.Circle;
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Point;
@@ -29,15 +30,14 @@ public class ShopServiceImpl extends BasicService implements ShopService {
 	}
 
 	@Override
-	public List<Shop> getNearShops(Point center, Double radius) {
-		try {
-		List<Shop> shops = repository.findByLocationNear(center, new Distance(radius));
-		return shops;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+	public List<Shop> getShopsInCircle(Point center, Double radius) {
+		Circle circle = new Circle(center, radius);
+		return repository.findByLocationWithin(circle);
 	}
 
-	
+	@Override
+	public List<Shop> getShopsInBox(Point upLeft, Point downRight) {
+		Box box = new Box(upLeft, downRight);
+		return repository.findByLocationWithin(box);
+	}
 }

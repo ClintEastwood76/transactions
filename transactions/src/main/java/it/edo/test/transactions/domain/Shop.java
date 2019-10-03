@@ -4,6 +4,7 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.geo.Point;
 import org.springframework.data.mongodb.core.geo.GeoJson;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 
 public class Shop {
 
@@ -12,7 +13,7 @@ public class Shop {
 	
 	private String code, name, address, city;
 	
-	private Point location;
+	private GeoJsonPoint location;
 
 	public ObjectId get_id() {
 		return _id;
@@ -58,7 +59,7 @@ public class Shop {
 		return location;
 	}
 
-	public void setLocation(Point location) {
+	public void setLocation(GeoJsonPoint location) {
 		this.location = location;
 	}
 

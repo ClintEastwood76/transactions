@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.geo.Point;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import it.edo.test.transactions.domain.Shop;
@@ -41,7 +42,7 @@ public class ShopServiceTest {
 		shop1.setName("Luppolo e Farina");
 		shop1.setAddress("65/71, Viale delle Accademie, Municipio Roma VIII, Roma, RM, Lazio, 00147, Italia");
 		shop1.setCity("Roma");
-		shop1.setLocation(new Point(new Double(42.07376224), new Double(12.81280518)));
+		shop1.setLocation(new GeoJsonPoint(new Double(42.07376224), new Double(12.81280518)));
 		repository.insert(shop1);
 	}
 	
@@ -52,11 +53,18 @@ public class ShopServiceTest {
 	}
 	
 	@Test
-	public void getShopNearMe() {
+	public void getShopInCircle() {
 		Point center = new Point(new Double(42.07376224), new Double(12.81280518));
 		Double radius = 0.1;
-		List<Shop> shopList = shopService.getNearShops(center, radius);
+		List<Shop> shopList = shopService.getShopsInCircle(center, radius);
 		assertSame("Sono diversi", 1, shopList.size());
 	}
 	
+	@Test
+	public void getShopInBox() {
+		Point upLeft = new Point(new Double(41.07376224), new Double(11.81280518));
+		Point downRight = new Point(new Double(43.07376224), new Double(13.81280518));
+		List<Shop> shopList = shopService.getShopsInBox(upLeft, downRight);
+		assertSame("Sono diversi", 1, shopList.size());
+	}
 }

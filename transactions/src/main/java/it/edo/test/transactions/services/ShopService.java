@@ -10,6 +10,8 @@ public interface ShopService {
 
 	List<Shop> getAllShops();
 
-	List<Shop> getNearShops(Point center, Double radius);
+	List<Shop> getShopsInCircle(Point center, Double radius);
+	
+	List<Shop> getShopsInBox(Point upLeft, Point downRight);
 
 }
