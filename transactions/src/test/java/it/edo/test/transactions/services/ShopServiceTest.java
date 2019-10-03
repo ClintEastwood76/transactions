@@ -1,6 +1,6 @@
 package it.edo.test.transactions.services;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -50,4 +50,13 @@ public class ShopServiceTest {
 		List<Shop> list = shopService.getAllShops();
 		logger.info(list.toString());
 	}
+	
+	@Test
+	public void getShopNearMe() {
+		Point center = new Point(new Double(42.07376224), new Double(12.81280518));
+		Double radius = 0.1;
+		List<Shop> shopList = shopService.getNearShops(center, radius);
+		assertSame("Sono diversi", 1, shopList.size());
+	}
+	
 }
