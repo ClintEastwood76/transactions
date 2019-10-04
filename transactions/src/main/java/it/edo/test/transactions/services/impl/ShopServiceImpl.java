@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.geo.Box;
 import org.springframework.data.geo.Circle;
-import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Point;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import it.edo.test.transactions.domain.Shop;

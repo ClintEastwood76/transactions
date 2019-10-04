@@ -3,6 +3,7 @@ package it.edo.test.transactions.controllers;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import io.jsonwebtoken.ExpiredJwtException;
@@ -10,6 +11,8 @@ import it.edo.test.transactions.config.JwtTokenUtil;
 
 public abstract class AbstractJwtController {
 
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
 	

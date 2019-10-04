@@ -51,4 +51,9 @@ public class ShopRepositoryTest {
 		logger.info("size: " + list.size());;
 		logger.info(list.toString());
 	}
+	
+	@Test
+	public void ranzaShop() {
+		repository.deleteAll();
+	}
 }

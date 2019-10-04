@@ -23,8 +23,6 @@ public class TransactionController extends AbstractJwtController {
 	@Autowired
 	TransactionService transactionService;
 	
-	Logger logger = LoggerFactory.getLogger(TransactionController.class);
-	
 	// @RequestMapping("/transactions")
 	@Deprecated
 	public List<Transaction> getAllTransactions(HttpServletRequest request) {

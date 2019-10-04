@@ -66,5 +66,8 @@ public class ShopServiceTest {
 		Point downRight = new Point(new Double(43.07376224), new Double(13.81280518));
 		List<Shop> shopList = shopService.getShopsInBox(upLeft, downRight);
 		assertSame("Sono diversi", 1, shopList.size());
+		logger.info(shopList.get(0).toString());
 	}
+	
+	
 }
