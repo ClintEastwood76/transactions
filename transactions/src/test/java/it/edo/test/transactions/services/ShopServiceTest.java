@@ -42,7 +42,7 @@ public class ShopServiceTest {
 		shop1.setName("Luppolo e Farina");
 		shop1.setAddress("65/71, Viale delle Accademie, Municipio Roma VIII, Roma, RM, Lazio, 00147, Italia");
 		shop1.setCity("Roma");
-		shop1.setLocation(new GeoJsonPoint(new Double(42.07376224), new Double(12.81280518)));
+		shop1.setLocation(new GeoJsonPoint(new Double(41.852160), new Double(12.491730)));
 		repository.insert(shop1);
 	}
 	
