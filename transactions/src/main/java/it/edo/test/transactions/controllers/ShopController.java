@@ -22,7 +22,7 @@ public class ShopController extends AbstractJwtController {
 	
 	@RequestMapping("/shopbox")
 	public List<Shop> getRechargePage(HttpServletRequest request,
-			@RequestParam(value = "upLeft", required = true) Point upLeft,
+			@RequestParam(value = "upleft", required = true) Point upLeft,
 			@RequestParam(value = "downright", required = true) Point downRight
             ) {
 		logger.warn("from " + upLeft.toString() + " to " + downRight.toString());
