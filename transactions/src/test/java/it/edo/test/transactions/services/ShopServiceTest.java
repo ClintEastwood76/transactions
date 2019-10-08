@@ -37,6 +37,7 @@ public class ShopServiceTest {
 	
 	@Test
 	public void createSomeShop() {
+		/*
 		Shop shop1 = new Shop();
 		shop1.setCode("000000000001");
 		shop1.setName("Luppolo e Farina");
@@ -44,6 +45,14 @@ public class ShopServiceTest {
 		shop1.setCity("Roma");
 		shop1.setLocation(new GeoJsonPoint(new Double(41.852160), new Double(12.491730)));
 		repository.insert(shop1);
+		*/
+		Shop shop2 = new Shop();
+		shop2.setCode("000000000002");
+		shop2.setName("Pizzeria Tre Castelli");
+		shop2.setAddress("Via A. Mantegna, 51, Roma, Italia");
+		shop2.setCity("Roma");
+		shop2.setLocation(new GeoJsonPoint(new Double(41.852160), new Double(12.494110)));
+		repository.insert(shop2);
 	}
 	
 	@Test
