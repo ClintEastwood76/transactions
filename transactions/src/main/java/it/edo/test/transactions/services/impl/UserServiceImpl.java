@@ -30,7 +30,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User loadUserByUsername(String username) {
-		return loadUserListByUsername(username).get(0);
+		User user = loadUserListByUsername(username).get(0);
+		user.setPassword(null);
+		return user;
 	}
 
 	@Override

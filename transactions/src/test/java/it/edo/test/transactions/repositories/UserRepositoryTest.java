@@ -44,5 +44,9 @@ public class UserRepositoryTest {
 
 	}
 	
+	@Test
+	public void ranzaTest() {
+		repository.deleteAll();
+	}
 	
 }

@@ -28,8 +28,14 @@ public class UserServiceTest {
 	@Test
 	public void storeUserTest() {
 		User u = new User();
+		u.setCode("000000000001");
 		u.setUsername("prova");
 		u.setPassword("provona");
+		u.setFirstName("Edoardo");
+		u.setLastName("Campagnano");
+		u.setEmail("edo@edo.it");
+		u.setCompanyCode("000000000001");
+		u.setCompanyName("EdoardoSoft & Co.");
 		userService.storeUser(u);
 	}
 }
