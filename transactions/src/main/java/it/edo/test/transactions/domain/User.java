@@ -17,7 +17,23 @@ public class User {
 	@Id
 	public ObjectId _id;
 	
-	private String username, password, firstName, lastName, token, code, email, companyCode, companyName;
+	private String code;
+
+	String username;
+
+	String password;
+
+	String firstName;
+
+	String lastName;
+
+	String token;
+
+	String companyName;
+
+	String companyCode;
+
+	String email;
 
 	public ObjectId get_id() {
 		return _id;
