@@ -31,10 +31,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User loadUserByUsername(String username) {
 		User user = loadUserListByUsername(username).get(0);
-<<<<<<< HEAD
-=======
-		// user.setPassword(null);
->>>>>>> branch 'master' of https://github.com/ClintEastwood76/transactions.git
 		return user;
 	}
 
