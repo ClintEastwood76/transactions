@@ -49,18 +49,7 @@ public class TransactionsApplicationTests {
 		repository.deleteAll();
 	}
 	
-	@Test
-	public void testInsert() {
-		String owner1 = "prova";
-		String owner2 = "prova";
-		Transaction t3 = new Transaction(new Date(), "trx3", owner2);
-		// repository.insert(t3);
-		for (int i = 0; i < 10; i++) {
-			Transaction t1 = new Transaction(new Date(), "trx " + i, owner1);
-			repository.insert(t1);
-		}
-		
-	}
+	
 	
 	@Test
 	public void findByOwner() {

@@ -17,7 +17,7 @@ public class User {
 	@Id
 	public ObjectId _id;
 	
-	String username, password, firstName, lastName, token;
+	private String username, password, firstName, lastName, token, code, email, companyCode, companyName;
 
 	public ObjectId get_id() {
 		return _id;
@@ -67,10 +67,45 @@ public class User {
 		this.token = token;
 	}
 
+	
+	
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCompanyCode() {
+		return companyCode;
+	}
+
+	public void setCompanyCode(String companyCode) {
+		this.companyCode = companyCode;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
 	@Override
 	public String toString() {
 		return "User [_id=" + _id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", token=" + token + "]";
+				+ ", lastName=" + lastName + ", token=" + token + ", code=" + code + ", email=" + email
+				+ ", companyCode=" + companyCode + ", companyNames=" + companyName + "]";
 	}
 
 	

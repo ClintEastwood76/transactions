@@ -11,11 +11,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import it.edo.test.transactions.domain.Recharge;
+import it.edo.test.transactions.domain.Shop;
 import it.edo.test.transactions.domain.Transaction;
 import it.edo.test.transactions.repositories.RechargeRepository;
+import it.edo.test.transactions.repositories.ShopRepository;
 import it.edo.test.transactions.repositories.TransactionsRepository;
 
 @RunWith(SpringRunner.class)
@@ -29,6 +32,9 @@ public class TransactionServiceTest {
 	
 	@Autowired
 	TransactionsRepository repository;
+	
+	@Autowired
+	ShopRepository shopRepo;
 	
 	@Autowired
 	private TransactionService transactionService;
@@ -52,9 +58,23 @@ public class TransactionServiceTest {
 	@Test
 	public void insertTransactions() {
 		String owner1 = "prova";
-		for (int i = 0; i < 6; i++) {
-			Transaction t1 = new Transaction(new Date(), "trx " + i, owner1);
-			repository.insert(t1);
+		List<Shop> shops = shopRepo.findAll();
+		for (int i = 0; i < 11; i++) {
+			Transaction transaction = new Transaction();
+			transaction.setOwner(owner1);
+			
+			int numBuoni = new Double(Math.random() * 3 + 1).intValue();
+			transaction.setNumTickets(numBuoni);
+			float importo = new Double(Math.random() * 20 + 1).floatValue();
+			transaction.setAmount(importo);
+			transaction.set_shopId(
+					shops.get(new Double(Math.random() * shops.size()).intValue()).get_id());
+		
+			transaction.setDate(new Date());
+			transaction.setDesc("todo");
+		
+			repository.insert(transaction);
+			// logger.info(transaction.toString());
 		}
 	}
 	
@@ -79,5 +99,16 @@ public class TransactionServiceTest {
 		r1.setLeft(12);
 		r1.setCode("000002");
 		rechargeRepo.insert(r1);
+	}
+	
+	@Test
+	public void ranzaTransaction() {
+		repository.deleteAll();
+	}
+	
+	@Test
+	public void getTransactionPage() {
+		Page<Transaction> page = transactionService.getTransactionPage("prova", 1, 2);
+		logger.info(page.getContent().toString());
 	}
 }

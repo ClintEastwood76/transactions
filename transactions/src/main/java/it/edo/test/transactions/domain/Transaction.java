@@ -13,6 +13,10 @@ public class Transaction {
 	private Date date;
 	private String desc;
 	private String owner;
+	private Float amount;
+	private Integer numTickets;
+	private ObjectId _shopId;
+	private Shop shop;
 
 	public String getDesc() {
 		return desc;
@@ -47,22 +51,44 @@ public class Transaction {
 		this.owner = owner;
 	}
 
+	public ObjectId get_shopId() {
+		return _shopId;
+	}
+
+	public void set_shopId(ObjectId _shopId) {
+		this._shopId = _shopId;
+	}
+
+	public Float getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Float amount) {
+		this.amount = amount;
+	}
+
+	public Integer getNumTickets() {
+		return numTickets;
+	}
+
+	public void setNumTickets(Integer numTickets) {
+		this.numTickets = numTickets;
+	}
+
+	public Shop getShop() {
+		return shop;
+	}
+
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
+
 	@Override
 	public String toString() {
-		return "Transaction [_id=" + _id + ", date=" + date + ", desc=" + desc + ", owner=" + owner + "]";
+		return "Transaction [_id=" + _id + ", date=" + date + ", desc=" + desc + ", owner=" + owner + ", amount="
+				+ amount + ", numTickets=" + numTickets + ", _shopId=" + _shopId + ", shop=" + shop + "]";
 	}
 
-	public Transaction(Date date, String desc, String owner) {
-		super();
-		this.date = date;
-		this.desc = desc;
-		this.owner = owner;
-	}
 	
-	public Transaction() {
-		super();
-	}
-	
-
 	
 }

@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import it.edo.test.transactions.domain.Transaction;
+import it.edo.test.transactions.repositories.ShopRepository;
 import it.edo.test.transactions.repositories.TransactionsRepository;
 import it.edo.test.transactions.services.TransactionService;
 
@@ -20,6 +21,9 @@ public class TransactionServiceImpl extends BasicService implements TransactionS
 	
 	@Autowired
 	TransactionsRepository repository;
+	
+	@Autowired
+	ShopRepository shopRepository;
 	
 	public List<Transaction> getAllTransactions(String owner) {
 		Transaction t = new Transaction();
@@ -48,7 +52,13 @@ public class TransactionServiceImpl extends BasicService implements TransactionS
 				getPageSize(pageSize),
 				Sort.by("date").descending()
 			);
-		return repository.findAll(example, pageable);
+		Page<Transaction> page = repository.findAll(example, pageable);
+		for (int i = 0; i < page.getContent().size(); i++) {
+			page.getContent().get(i).setShop(
+				shopRepository.findBy_id(page.getContent().get(i).get_shopId())
+			);
+		}
+		return page;
 	}
 	
 	
